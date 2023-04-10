@@ -7,8 +7,8 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    public function index(Post $post)
+     public function index(Post $post)
     {
-        return $post->get();//$postの中身を戻り値にする。
+       return view('posts/index')->with(['posts' => $post->getByLimit()]);
     }
 }

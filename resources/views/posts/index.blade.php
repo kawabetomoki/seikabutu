@@ -11,10 +11,15 @@
     <body class="antialiased">
        <h1>Blog</h1>
        <div class='posts'>
-           <div class='post'>
-               <h2 class='title'>Title1</h2>
-               <p class='summary'></p>
-           </div>
+           @foreach ($posts as $post)
+               <div class='post'>
+                   <h2 class='title'>{{ $post->title }}</h2>
+                   <p class='summary'>{{ $post->summary }}</p>
+               </div>
+            @endforeach
        </div>
+       <div class='paginate'>
+            {{ $posts->links() }}
+        </div>
     </body>
 </html>
