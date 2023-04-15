@@ -39,7 +39,7 @@ class PostController extends Controller
         return view('posts/edit')->with(['post' => $post]);
     }
     
-     public function comment(Comment $comment)
+    public function comment(Comment $comment)
     {
         return view('comments/comment')->with(['comments' => $comment]);
     }
