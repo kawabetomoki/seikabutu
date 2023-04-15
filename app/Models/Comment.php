@@ -14,4 +14,9 @@ class Comment extends Model
     {
         return $this->belongsTo(Post::class);
     }
+    
+    public function getByCategory(int $limit_count = 100)
+    {
+         return $this->posts()->with('comment')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
 }
