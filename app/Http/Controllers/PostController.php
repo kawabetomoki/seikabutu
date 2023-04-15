@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use App\Models\Comment;
 
 class PostController extends Controller
 {
@@ -36,6 +37,11 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         return view('posts/edit')->with(['post' => $post]);
+    }
+    
+     public function comment(Comment $comment)
+    {
+        return view('comments/comment')->with(['comments' => $comment]);
     }
     
     public function update(PostRequest $request, Post $post)
