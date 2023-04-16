@@ -22,6 +22,6 @@ class Comment extends Model
     
     public function getBycomment(int $limit_count = 100)
     {
-         return $this->comments()->with('comment')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+         return $this->post()->with('comment')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }

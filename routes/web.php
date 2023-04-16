@@ -32,6 +32,7 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
     Route::get('/posts/{post}/edit', 'edit')->name('edit');
 });
 
+Route::post('/comments/{post}/store', [CommentController::class, 'store']);
 Route::get('/comments/{post}/comment', [CommentController::class,'index']);
 
 Route::middleware('auth')->group(function () {

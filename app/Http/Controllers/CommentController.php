@@ -2,22 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Comment;
+use Illuminate\Http\Request;
+use App\Models\Post;
 
 class CommentController extends Controller
 {
-    public function index(Comment $comment)
+    public function index(Comment $comment, Post $post)
     {
-        return view('comments.index')->with(['posts' => $comment->getBycomment()]);
+        return view('comments.index')->with(['comments' => $comment->where('post_id', $post->id)->get(), 'post'=>$post]);
     }
     
-    public function store(PostRequest $request, Comment $comment)
+   public function comment(Comment $comment)
+    {
+        return view('comments/{{ $post->id }}/comment')->with(['comments' => $comment->get()]);
+    }
+    
+    public function store(Request $request, Comment $comment, Post $post)
     {
         $input = $request['comment'];
-        $post->fill($input);
-        $post->user_id=1;
-        $post->save();
-        return redirect('/comments/' . $comment->id);
+        $comment->fill($input);
+        $comment->user_id=1;
+        $comment->post_id=$post->id;
+        $comment->save();
+        return redirect('/comments/'.$post->id.'/comment');
     }
 }
