@@ -41,7 +41,7 @@ class PostController extends Controller
     
     public function comment(Comment $comment)
     {
-        return view('comments/comment')->with(['comments' => $comment]);
+        return view('comments/comment')->with(['comments' => $comment->get()]);
     }
     
     public function update(PostRequest $request, Post $post)
