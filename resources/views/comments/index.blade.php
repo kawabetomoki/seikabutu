@@ -23,6 +23,7 @@
         <div class='comments'>
             @foreach ($comment as $comment)
                 <div class='comment'>
+                    {{ Auth::user()->name }}
                     <h2 class='title'>{{ $comment->title }}</h2>
                     <p class='body'>{{ $comment->body }}</p>
                 </div>
